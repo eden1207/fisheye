@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/photographer.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Fisheye - photographe </title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html"><img src="assets/images/logo.png" alt="image logo" class="logo"></a>
+    </header>
+    <main id="main" aria-hidden="false">
+      <div class="photograph-header photograph-header_dimensions photograph-header_border" aria-label="Description du photographe">
+        <div class="photograph-titre JS-photograph-title"></div>
+        <button class="contact-button contact-button_dimensions contact-button_border JS-modal-btn" type="button">Contactez-moi</button>
+        <div class="Photo-crop Photo-crop_dimensions Photo-crop_border JS-Photo-Profil"></div>
+      </div>
+
+      <!-- Gestion du tri -->
+
+      <form class="sorting-form" method="post" action="traitement.php">
+        <p>
+            <label class="title-sorting-form" for="tri">Trier par</label>
+            <select class="tab-sorting-form tab-sorting-form_dimensions tab-sorting-form_border" name="tri" id="tri">
+                <option value="popularite" class="JS-pop">Popularité</option>
+                <option value="date" class="JS-date">Date</option>
+                <option value="titre" class="JS-title">Titre</option>
+            </select>
+        </p>
+      </form>
+
+
+     <!-- Affichage des médias -->
+
+     <div class="media_section media_section_dimensions media_section_border" aria-label="Médias du photographe"></div>
+
+     <!-- Informations complémentaires (Likes et tarif) -->
+
+      <div class="otherInformations otherInformations_dimensions otherInformations_border" aria-label="Popularité et tarif du photographe">
+        <div class="sumLikes">
+          <h3 class="JS-sumLikes"></h3>
+          <strong class="fa-solid fa-heart"></strong>
+        </div>
+        <h3 class="JS-price"></h3>
+      </div>
+    </main>
+
+         <!-- Fenêtre d'enregistrement des données pour l'inscription -->
+
+         <div class="bground bground_dimensions JS-bground" role="dialog">
+          <div class="content content_dimensions content_border content_animation" aria-label="formulaire">
+              <button class="close JS-close" type="button"><img src="assets/icons/close.svg" alt="image bouton fermeture"></button>
+              <h3>Contactez-moi</h3>
+              <div class="JS-form-name"></div>
+              <div class="modal-body modal-body_dimensions modal-body_border">
+                  <form id="JS-myForm" role="group" aria-labelledby="coordonnees">  
+                      <div class="formData">
+                          <label for="JS-first">Prénom</label><br>
+                          <input class="text-control text-control_dimensions text-control_border border-error1" type="text" id="JS-first" name="first" aria-required=true><br>
+                      </div>
+                      <div class="formData">
+                          <label for="JS-last">Nom</label><br>
+                          <input class="text-control text-control_dimensions text-control_border border-error2" type="text" id="JS-last" name="last" aria-required=true><br>
+                      </div>
+                      <div class="formData">
+                          <label for="JS-email">E-mail</label><br>
+                          <input class="text-control text-control_dimensions text-control_border border-error3" type="email" id="JS-email" name="email" aria-required=true><br>
+                      </div>
+                      <div class="formData">
+                          <label for="JS-message">Votre message</label><br>
+                          <input class="text-control-message text-control-message_dimensions text-control-message_border border-error3" type="text" id="JS-message" name="message" aria-required=true><br>
+                      </div>
+                      <button id="JS-btn-submit" class="btn-submit btn-submit_dimensions btn-submit_border button" type="submit">Envoyer</button>
+                  </form>
+              </div>
+          </div>
+        </div>
+  
+        <!-- Lightbox -->
+  
+        <div class="lightbox" role="dialog" aria-describedby="lightbox">
+          <div class="lightbox-bground lightbox-bground_dimensions">
+            <div class="lightbox-content lightbox-content_dimensions lightbox-content_border lightbox-content_animation">
+                  <button class="lightbox-close JS-lightbox-close" role="button" type="button" aria-label="fermer" title="fermer cette fenêtre modale" data-dismiss="dialog"><strong class="fa-solid fa-xmark"></strong></button>
+                  <button class="lightbox-next JS-lightbox-next" role="link" type="button" aria-label="suivant" title="passer à la photo suivante" data-dismiss="dialog"><strong class="fa-solid fa-angle-right"></strong></button>
+                  <button class="lightbox-prev JS-lightbox-prev" role="link" type="button" aria-label="précédent" title="revenir sur la photo précédente" data-dismiss="dialog"><strong class="fa-solid fa-angle-left"></strong></button>
+                  <div role="image" class="lightbox-image-crop lightbox-image-crop_dimensions JS-media"></div>
+                  <h3 role="text" class="JS-lightboxTitle lightbox-title"></h3>
+            </div>
+          </div>
+        </div>
+
+    <!-- Les scripts JS -->
+    
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/factories/media.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/contactForm.js"></script>
+  </body>
+</html>
