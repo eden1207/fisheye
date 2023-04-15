@@ -1,0 +1,515 @@
+/*---- Mise en forme des pages photographes ----*/
+
+/*-- Couleurs --*/
+
+$red:#901C1C;
+$orange:#D3573C;
+
+
+/*-- Mixin --*/
+
+@mixin dimensions($width, $height) {
+    width: $width; 
+    height: $height;
+}
+
+@mixin position-package($position, $top, $bottom, $left, $right) {
+    position: $position;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+}
+
+@mixin padding-package($top, $bottom, $left, $right) {
+    padding-top: $top;
+    padding-bottom: $bottom;
+    padding-left: $left;
+    padding-right: $right;
+}
+
+@mixin margin-package($top, $bottom, $left, $right) {
+    margin-top: $top;
+    margin-bottom: $bottom;
+    margin-left: $left;
+    margin-right: $right;
+}
+
+
+/*---- En-tête de la page ----*/
+
+
+.photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    &_dimensions{
+        @include dimensions(auto, 300px);
+    }
+    &_border{
+        @include padding-package(none, none, 4%, 4%);
+        @media all and (min-width: 992px) {
+            @include margin-package(0, 0, 7%, 7%);
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            @include margin-package(0, 0, 2%, 2%);
+        }
+    }
+}
+
+h2 {
+    @media all and (min-width: 992px) {
+        font-size: 64px;
+    }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+        font-size: 38px;
+    }
+    color: $orange;
+    line-height: 1px;
+}
+
+h3 {
+    @media all and (min-width: 992px) {
+        font-size: 31px;
+    }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+        font-size: 19px;
+    }
+    color: $red;
+    line-height: 1px;
+}
+
+h4 {
+    @media all and (min-width: 992px) {
+        font-size: 23px;
+    }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+        font-size: 14px;
+    }
+    color: #525252;
+    line-height: 1px;
+}
+
+.photograph-titre {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Photo-crop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    &_dimensions{
+        @include dimensions(200px, 200px);
+    }
+    &_border{
+        @include margin-package(none, 30px, none, none);
+        border-radius: 50%;
+    }
+}
+
+img {
+    @include dimensions(auto, 300px);
+}
+
+.contact-button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: $red;
+    cursor: pointer;
+    &_dimensions{
+        @include dimensions(170px, 70px);
+    }
+    &_border{
+        @include padding-package(11px, 11px, 11px, 11px);
+        border: none;
+        border-radius: 5px;
+    }
+}
+
+/*---- Medias de la page ----*/
+
+/*-- Système de tri --*/
+
+.sorting-form{
+    @include margin-package(none, none, 3%, none);
+}
+
+.title-sorting-form{
+    font-size: 18px;
+    color: black;
+}
+
+.tab-sorting-form{
+    font-size: 18px;
+    background-color: $red;
+    color: white;
+    &_dimensions{
+        @include dimensions(170px, 60px);
+    }
+    &_border{
+        border-radius: 5px;
+        border: none;
+    }
+}
+
+/*-- Card --*/
+
+.media_section {
+    display: grid;
+    @media all and (min-width: 992px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    gap: 1%;
+    row-gap: 1%;
+    &_dimensions{
+        @include dimensions(auto, auto);
+    }
+    &_border{
+        @include margin-package(30px, none, 3%, none);
+    }
+}
+
+a[title*="link-lightbox"]
+{
+    text-decoration: none;
+    @include dimensions(100%, auto);
+}
+
+a[title*="link-lightbox"]:hover
+{
+    text-decoration: none;
+    @include dimensions(100%, auto);
+}
+
+
+.media-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &_dimensions{
+        @include dimensions(85%, auto);
+    }
+    &_border{
+        @include margin-package(none, 20px, none, none);
+    }
+}
+
+.media-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &_dimensions{
+        @include dimensions(100%, 50px);
+    }
+}
+
+.media-card-title h3 {
+    font-size: 24px;
+}
+
+.media-article-photo-crop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    &_dimensions{
+        @include dimensions(100%, 300px);
+        max-width: 405px;
+    }
+    &_border{
+        border-radius: 5px;
+    }
+}
+
+.media-article-photo{
+    @include dimensions(auto, 610px);
+}
+
+.media-article-title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    &_dimensions{
+        @include dimensions(30%, 50px);
+    }
+}
+
+.media-article-like{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &_dimensions{
+        @include dimensions(17%, 50px);
+    }
+}
+
+.media-article-like i{
+    font-size: 24px;
+    color: $red;
+}
+
+.media-article-like button{
+    background-color: white;
+    border: white;
+}
+
+/*-- Somme des likes + tarif --*/
+
+.otherInformations {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include position-package(fixed, 90%, none, none, 50px);
+    background-color: #DB8876;
+    &_dimensions{
+        @include dimensions(376px, 70px);
+    }
+    &_border{
+        border-radius: 5px;
+        @include padding-package(none, none, 1%, 1%);
+    }
+}
+
+.otherInformations h3 {
+    font-size: 24px;
+    color: black;
+}
+
+.otherInformations strong {
+    font-size: 24px;
+    color: black;
+    @include padding-package(none, none, 10%, none);
+}
+
+.sumLikes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*-- La lightbox --*/
+
+.lightbox-bground {
+    display: none;
+    /*z-index: 1;*/
+    background-color: rgba(196, 196, 196, 0.4);
+    z-index: 10;
+    @include position-package(fixed, 0, none, 0, none);
+    &_dimensions{
+        @include dimensions(100%, 100%);
+    }
+}
+
+.lightbox-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include position-package(relative, none, none, none, none);
+    &_dimensions{
+        @include dimensions(100%, 600px);
+        max-width: 800px;
+    }
+    &_border{
+        @include padding-package(10px, none, none, none);
+        @include margin-package(2%, 2%, auto, auto);
+    }
+    &_animation{
+        animation-name: modalopen;
+        animation-duration: 0.4s;
+    }
+}
+
+.lightbox-close{
+    @include position-package(absolute, 2%, none, none, 3%);
+    font-size: 42px;
+    border: none;
+    color: $red;
+    background-color: rgba(196, 196, 196, 0);
+    cursor: pointer;
+}
+
+.lightbox-next{
+    @include position-package(absolute, 45%, none, none, 3%);
+    font-size: 42px;
+    border: none;
+    color: $red;
+    background-color: rgba(196, 196, 196, 0);
+    cursor: pointer;
+}
+
+.lightbox-prev{
+    @include position-package(absolute, 45%, none, 3%, none);
+    font-size: 42px;
+    border: none;
+    color: $red;
+    background-color: rgba(196, 196, 196, 0);
+    cursor: pointer;
+}
+
+.lightbox-image-crop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    &_dimensions{
+        @include dimensions(80%, 100%);
+    }
+}
+
+.lightbox-image {
+    @include dimensions(90%, auto);
+}
+
+.lightbox-title {
+    font-size: 21px;
+    @include position-package(absolute, 100%, none, 14%, none);
+}
+
+
+/*-- Le formulaire --*/
+
+/*-- La toile de fond --*/
+
+.bground {
+    display: none;
+    @include position-package(fixed, 0, none, 0, none);
+    z-index: 1;
+    overflow: auto;
+    background-color: rgba(196, 196, 196, 0.4);
+    &_dimensions{
+        @include dimensions(100%, 100%);
+    }
+}
+
+/*-- Le contenu du formulaire --*/
+
+  .content {
+    background: #DB8876;
+    overflow: hidden;
+    color: #fff;
+    @include position-package(relative, none, none, none, none);
+    &_dimensions{
+        @include dimensions(100%, 850px);
+        max-width: 500px;
+    }
+    &_border{
+        @include margin-package(5%, 5%, auto, auto);
+        border-radius: 5px;
+        @include padding-package(5px, none, none, none);
+    }
+    &_animation{
+        animation-name: modalopen;
+        animation-duration: 0.4s;
+    }
+}
+
+.content h3 {
+    color: black;
+    margin-left: 7%;
+    @include margin-package(none, none, 7%, none);
+    font-size: 44px;
+    line-height: 40px;
+}
+
+.close {
+    @include position-package(absolute, 25px, none, none, 25px);
+    cursor: pointer;
+    color: white;
+    background-color: #DB8876;
+    border: none;
+    font-size: 30px;
+}
+
+.close img {
+    @include dimensions(32px, auto);
+}
+
+
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &_dimensions{
+        @include dimensions(auto, 95%);
+    }
+    &_border{
+        @include padding-package(5%, 5%, 8%, 8%);
+    }
+}
+
+
+label {
+    font-family: var(--font-default);
+    font-size: 25px;
+    color: #312E2E;
+    font-weight: normal;
+    display: inline-block;
+    @include margin-package(none, 11px, none, none);
+}
+input {
+    @include padding-package(8px, 8px, 8px, 8px);
+    border: 0.8px solid #ccc;
+    outline: none;
+}
+
+.text-control {
+    font-size: 20px;
+    &_dimensions{
+        @include dimensions(100%, 40px);
+    }
+    &_border{
+        @include margin-package(0, 0, 0, 0);
+        @include padding-package(8px, 8px, 8px, 8px);
+        border-radius: 5px;
+    }
+}
+
+.text-control-message {
+    font-size: 20px;
+    &_dimensions{
+        @include dimensions(100%, 110px);
+    }
+    &_border{
+        @include margin-package(0, 0, 0, 0);
+        @include padding-package(8px, 8px, 8px, 8px);
+        border-radius: 5px;
+    }
+}
+
+.btn-submit {
+  background: $red;
+  display: block;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  &_dimensions{
+    @include dimensions(170px, 70px);
+  }
+  &_border{
+    @include margin-package(5%, none, none, none);
+    border: 0;
+    border-radius: 5px;
+  }
+}
+
+@keyframes modalopen {
+    from {
+      opacity: 0;
+      transform: translateY(-150px);
+    }
+    to {
+      opacity: 1;
+    }
+}
