@@ -262,13 +262,15 @@ const url = window.location.search.split('?id=').join('');
 async function getPhotographers() {
 
   // Récupération des données de photographers.json (composées d'une partie "photographers" et d'une partie "media")
-  let getJsonData = new GetPhotographerJsonData("./data/photographers.json").get();
+  /*let getJsonData = new GetPhotographerJsonData("./data/photographers.json").get();*/
 
   // Récupération de la partie "photographers" du json
-  const photographersWork = await getJsonData.then(data => data.photographers);
+  /*const photographersWork = await getJsonData.then(data => data.photographers);*/
+  const photographersWork = data[0].photographers;
 
   // Récupération de la partie "media" du json
-  const photographersMedia = await getJsonData.then(data => data.media);
+  /*const photographersMedia = await getJsonData.then(data => data.media);*/
+  const photographersMedia = data[0].media;
 
   // Récupération des photos du photographe dont on est sur la page
 
